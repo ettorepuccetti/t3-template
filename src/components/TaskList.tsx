@@ -14,7 +14,7 @@ export const TaskList = () => {
   }
 
   return (
-    <div className="my-4 flex h-[60vh] flex-col items-start overflow-scroll">
+    <div className="my-4 flex min-h-[25vh] max-h-[50vh] flex-col items-start overflow-scroll px-8">
       {taskQuery.data?.map((task, index) => (
         <div key={task.id}>
           {index + 1}. {task.name}
