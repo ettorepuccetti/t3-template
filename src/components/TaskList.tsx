@@ -14,8 +14,12 @@ export const TaskList = () => {
   }
 
   return (
-    <div className="flex flex-col items-center">
-      {taskQuery.data?.map((task) => <div key={task.id}>{task.name}</div>)}
+    <div className="my-4 flex h-[60vh] flex-col items-start overflow-scroll">
+      {taskQuery.data?.map((task, index) => (
+        <div key={task.id}>
+          {index + 1}. {task.name}
+        </div>
+      ))}
     </div>
   );
 };

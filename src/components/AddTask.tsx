@@ -5,9 +5,15 @@ import { api } from "~/utils/api";
 
 export function AddTask() {
   const [taskName, setTaskName] = useState<string>("");
-  const addTask = api.task.create.useMutation();
+  const taskQuery = api.task.getAll.useQuery();
+  const addTask = api.task.create.useMutation({
+    onSuccess: async () => {
+      await taskQuery.refetch();
+    },
+  });
 
   const onAddTask = (): void => {
+    setTaskName("");
     addTask.mutate({ name: taskName });
   };
 
