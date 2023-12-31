@@ -24,6 +24,11 @@ export function AddTask() {
         placeholder="new item"
         value={taskName}
         onChange={(e) => setTaskName(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            onAddTask();
+          }
+        }}
       />
       <Button type="submit" onClick={onAddTask}>
         Add
