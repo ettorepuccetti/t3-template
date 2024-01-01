@@ -1,4 +1,5 @@
 import { api } from "~/utils/api";
+import Task from "./Task";
 
 export const TaskList = () => {
   const taskQuery = api.task.getAll.useQuery(undefined, {
@@ -14,11 +15,9 @@ export const TaskList = () => {
   }
 
   return (
-    <div className="my-4 flex min-h-[25vh] max-h-[50vh] flex-col items-start overflow-scroll px-8">
+    <div className="my-4 flex max-h-[50vh] min-h-[25vh] flex-col items-start overflow-scroll px-8">
       {taskQuery.data?.map((task, index) => (
-        <div key={task.id}>
-          {index + 1}. {task.name}
-        </div>
+        <Task name={task.name} id={task.id} index={index} />
       ))}
     </div>
   );
