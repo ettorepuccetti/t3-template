@@ -45,3 +45,23 @@ Cypress.Commands.add("loginToAuth0", (username: string, password: string) => {
   log.snapshot("after");
   log.end();
 });
+
+Cypress.Commands.add("logout", () => {
+  cy.session(
+    "auth0-logout",
+    () => {
+      cy.visit("/api/auth/signout/");
+      cy.get("#submitButton").click();
+      cy.url().should("equal", "http://localhost:3000/");
+    },
+    {
+      validate: () => {
+        cy.request("/api/auth/session").its("body").should("be.empty");
+      },
+    },
+  );
+});
+
+Cypress.Commands.add("getByDataTest", (dataTest: string) => {
+  return cy.get(`[data-test="${dataTest}"]`);
+});

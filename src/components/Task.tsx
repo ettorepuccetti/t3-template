@@ -21,8 +21,13 @@ export default function Task(props: {
   }
 
   return (
-    <div className="flex items-center gap-2 py-1">
-      <Button onClick={onDelete} variant={"outline"} className="h-6 w-8 p-2">
+    <div data-test="task-element" className="flex items-center gap-2 py-1">
+      <Button
+        data-test="delete-task-button"
+        onClick={onDelete}
+        variant={"outline"}
+        className="h-6 w-8 p-2"
+      >
         <TrashIcon />
       </Button>
       <div key={props.id}>

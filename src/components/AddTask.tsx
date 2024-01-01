@@ -26,6 +26,7 @@ export function AddTask() {
     <div>
       <div className="flex w-full max-w-sm items-center space-x-2">
         <Input
+          data-test="add-task-input"
           disabled={!sessionData}
           type="text"
           placeholder="new item"
@@ -37,12 +38,17 @@ export function AddTask() {
             }
           }}
         />
-        <Button type="submit" onClick={onAddTask} disabled={!sessionData}>
+        <Button
+          data-test="add-task-button"
+          type="submit"
+          onClick={onAddTask}
+          disabled={!sessionData}
+        >
           Add
         </Button>
       </div>
       {!sessionData && (
-        <div className="mt-3 flex items-center gap-1 text-sm">
+        <div data-test="login-hint-message" className="mt-3 flex items-center gap-1 text-sm">
           <LockClosedIcon /> you must login for creating a task
         </div>
       )}

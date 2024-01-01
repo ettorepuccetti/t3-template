@@ -8,10 +8,11 @@ export const Login = () => {
   if (sessionData) {
     return (
       <div className="flex items-center gap-1">
-        <div>
+        <div data-test="login-welcome">
           Welcome <span className="font-bold">{sessionData.user.name}</span>
         </div>
         <Button
+          data-test="logout-button"
           className="h-8"
           variant={"outline"}
           onClick={() => void signOut()}
@@ -25,6 +26,7 @@ export const Login = () => {
     return (
       <>
         <Button
+          data-test="login-button"
           className="h-8"
           variant={"outline"}
           onClick={() => void signIn("auth0")}

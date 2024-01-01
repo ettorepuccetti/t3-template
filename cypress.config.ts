@@ -1,3 +1,4 @@
+import { PrismaClient } from "@prisma/client";
 import { defineConfig } from "cypress";
 import dotenv from "dotenv";
 
@@ -41,6 +42,12 @@ export default defineConfig({
   },
 });
 
+const prisma = new PrismaClient();
+
 function tasks(on: Cypress.PluginEvents) {
-  on("task", {});
+  on("task", {
+    "db:clearTasks"() {
+      return prisma.task.deleteMany();
+    },
+  });
 }
