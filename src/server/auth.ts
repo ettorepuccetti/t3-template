@@ -7,7 +7,7 @@ import {
 } from "next-auth";
 import Auth0Provider from "next-auth/providers/auth0";
 
-import { env } from "~/env";
+import { env } from "~/env.mjs";
 import { db } from "~/server/db";
 
 /**

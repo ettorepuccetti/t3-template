@@ -8,6 +8,7 @@
     "resolveJsonModule": true,
     "moduleDetection": "force",
     "isolatedModules": true,
+    "declaration": true,
 
     /* Strictness */
     "strict": true,
@@ -18,7 +19,7 @@
     "lib": ["dom", "dom.iterable", "ES2022"],
     "noEmit": true,
     "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "Node",
     "jsx": "preserve",
     "plugins": [{ "name": "next" }],
     "incremental": true,
@@ -34,8 +35,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.cjs",
     "**/*.js",
+    "**/*.cjs",
+    "**/*.mjs",
     ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
