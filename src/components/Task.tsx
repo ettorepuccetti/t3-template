@@ -1,24 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { TrashIcon } from "@radix-ui/react-icons";
-import { api } from "~/utils/api";
+import { useMergedStoreContext } from "~/hooks/useStoreContext";
 
 export default function Task(props: {
   name: string;
   id: number;
   index: number;
 }) {
-  const taskQuery = api.task.getAll.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
-  const deleteTask = api.task.delete.useMutation({
-    onSuccess: async () => {
-      await taskQuery.refetch();
-    },
-  });
+  const deleteTask = useMergedStoreContext((store) => store.deleteTask);
 
-  function onDelete() {
+  if (!deleteTask) return <div>loading...</div>;
+
+  const onDelete = () => {
     deleteTask.mutate(props.id);
-  }
+  };
 
   return (
     <div data-test="task-element" className="flex items-center gap-2 py-1">

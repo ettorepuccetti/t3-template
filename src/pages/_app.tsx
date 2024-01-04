@@ -10,6 +10,7 @@ import { httpBatchLink, loggerLink } from "@trpc/client";
 import { Inter as FontSans } from "next/font/google";
 import { useState } from "react";
 import superjson from "superjson";
+import { MergedStoreProvider } from "~/hooks/useStoreContext";
 import "~/styles/globals.css";
 
 export const fontSans = FontSans({
@@ -54,7 +55,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
       <api.Provider client={trpcClient} queryClient={queryClient}>
         <QueryClientProvider client={queryClient}>
           <SessionProvider session={session}>
-            <Component {...pageProps} />
+            <MergedStoreProvider>
+              <Component {...pageProps} />
+            </MergedStoreProvider>
           </SessionProvider>
         </QueryClientProvider>
       </api.Provider>
