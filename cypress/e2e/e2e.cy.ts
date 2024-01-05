@@ -5,7 +5,7 @@ describe("not logged user", () => {
     cy.getByDataTest("logout-button").should("not.exist");
     cy.getByDataTest("login-welcome").should("not.exist");
   });
-  it("add task disabled", () => {
+  it("add task disabled and hint message visible", () => {
     cy.visit("/");
     cy.getByDataTest("add-task-input").should("be.disabled");
     cy.getByDataTest("add-task-button").should("be.disabled");
