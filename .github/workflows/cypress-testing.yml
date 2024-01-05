@@ -61,6 +61,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: install pnpm
+        uses: pnpm/action-setup@v2
       - name: Download the build folders
         uses: actions/download-artifact@v4
         with:
@@ -92,6 +94,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: install pnpm
+        uses: pnpm/action-setup@v2
       - name: Download the build folders
         uses: actions/download-artifact@v4
         with:
@@ -115,6 +119,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: install pnpm
+        uses: pnpm/action-setup@v2
       - name: Download the build folders
         uses: actions/download-artifact@v4
         with:
