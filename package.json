@@ -13,7 +13,11 @@
     "cypress": "cypress open",
     "cypress-mobile": "cypress open --config viewportWidth=375,viewportHeight=667",
     "cypress-run-e2e": "cypress run --config video=false",
-    "cypress-run-component": "cypress run --config video=false --component"
+    "cypress-run-component": "cypress run --config video=false --component",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*": "prettier --ignore-unknown --write"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
@@ -51,6 +55,8 @@
     "autoprefixer": "^10.4.14",
     "cypress": "^13.6.2",
     "eslint": "^8.54.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.0",
     "postcss": "^8.4.31",
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
