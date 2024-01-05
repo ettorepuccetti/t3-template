@@ -24,7 +24,7 @@ describe("Add Task", () => {
 });
 
 describe("Add Task - logged user", () => {
-  it("GIVEN ... WHEN enter a task name and submit THEN should call addTask", () => {
+  it("GIVEN component WHEN enter a task name and submit THEN should call addTask", () => {
     mountWithContext(<AddTaskContext />, session);
     cy.getByDataTest("add-task-input").type("new task");
     cy.getByDataTest("add-task-button").click();
