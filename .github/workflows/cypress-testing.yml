@@ -35,7 +35,7 @@ jobs:
       - name: Cypress install
         uses: cypress-io/github-action@v5
         with:
-          build: pnpm build:test
+          build: pnpm build
           runTests: false
       - name: Save build folder
         uses: actions/upload-artifact@v4
@@ -70,7 +70,7 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           # use build step to seed the database, build is already done in install job
-          build: pnpm db:seed
+          build: pnpm prisma db push && pnpm prisma db seed
           start: pnpm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
@@ -102,7 +102,7 @@ jobs:
         with:
           config: "viewportWidth=375,viewportHeight=667"
           #use build step to seed the database, build is already done in install job
-          build: pnpm db:seed
+          build: pnpm prisma db push && pnpm prisma db seed
           start: pnpm start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
