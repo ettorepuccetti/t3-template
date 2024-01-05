@@ -1,14 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { TrashIcon } from "@radix-ui/react-icons";
+import { useSession } from "next-auth/react";
 import { useMergedStoreContext } from "~/hooks/useStoreContext";
 
 export default function Task(props: {
   name: string;
   id: number;
   index: number;
+  userId: string;
 }) {
   const deleteTask = useMergedStoreContext((store) => store.deleteTask);
-
+  const { data: session } = useSession();
   if (!deleteTask) return <div>loading...</div>;
 
   const onDelete = () => {
@@ -22,6 +24,7 @@ export default function Task(props: {
         onClick={onDelete}
         variant={"outline"}
         className="h-6 w-8 p-2"
+        disabled={session?.user?.id !== props.userId}
       >
         <TrashIcon />
       </Button>
