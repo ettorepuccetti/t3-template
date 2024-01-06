@@ -69,7 +69,7 @@ jobs:
           name: build
           path: .next
       - name: "UI Tests - Chrome"
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           # use build step to seed the database, build is already done in install job
           build: pnpm prisma db push && pnpm prisma db seed
@@ -102,7 +102,7 @@ jobs:
           name: build
           path: .next
       - name: "UI Tests - Chrome - Mobile"
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           config: "viewportWidth=375,viewportHeight=667"
           #use build step to seed the database, build is already done in install job
@@ -114,20 +114,14 @@ jobs:
           config-file: cypress.config.ts
 
   component-testing:
-    needs: install
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: install pnpm
         uses: pnpm/action-setup@v2
-      # - name: Download the build folders
-      #   uses: actions/download-artifact@v4
-      #   with:
-      #     name: build
-      #     path: .next
       - name: Run Component Testing
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           component: true
           config-file: cypress.config.ts
