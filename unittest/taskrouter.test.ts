@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 import prisma from "~/server/__mocks__/db";
 import { appRouter } from "~/server/api/root";
 
+// deep mocked in ~/server/__mocks__/db.ts
 // vi.mock("~/server/db");
 
 describe("trpc test", () => {

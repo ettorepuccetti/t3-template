@@ -105,7 +105,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           config: "viewportWidth=375,viewportHeight=667"
-          #use build step to seed the database, build is already done in install job
+          # use build step to seed the database, build is already done in install job
           build: pnpm prisma db push && pnpm prisma db seed
           start: pnpm start
           wait-on: "http://localhost:3000"
@@ -125,3 +125,13 @@ jobs:
         with:
           component: true
           config-file: cypress.config.ts
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: install pnpm
+        uses: pnpm/action-setup@v2
+      - name: Run Unit Tests
+        run: pnpm test
