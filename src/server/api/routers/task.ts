@@ -24,14 +24,11 @@ export const taskRouter = createTRPCRouter({
   delete: protectedProcedure
     .input(z.number())
     .mutation(async ({ ctx, input }) => {
-      const taskToDelete = await ctx.db.task.findUnique({
+      const taskToDelete = await ctx.db.task.findUniqueOrThrow({
         where: {
           id: input,
         },
       });
-      if (!taskToDelete) {
-        throw new Error("Task not found");
-      }
       if (taskToDelete.createdById !== ctx.session.user.id) {
         throw new Error("You can only delete your own tasks");
       }

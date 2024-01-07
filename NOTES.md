@@ -14,8 +14,10 @@ git push -u -f origin main
 Launch a new container for mysql:
 
 ```bash
-docker run --name mysql-dbname -e MYSQL_ROOT_PASSWORD=secret -p 3307:3307 -d mysql
+docker run --name mysql-dbname -e MYSQL_ROOT_PASSWORD=secret -p 3307:3306 -d mysql
 ```
+
+on port mapping [here](https://stackoverflow.com/questions/41637013/docker-mysql-on-different-port)
 
 Configure the `DATABASE_URL` in the `.env` file:
 
@@ -40,3 +42,13 @@ content: [
   "@/lib/**/*.{ts,tsx}",
 ]
 ```
+
+## Vitest
+
+### Mocking prisma
+
+[guide](https://www.prisma.io/blog/testing-series-1-8eRB5p0Y8o#why-mock-prisma-client)
+
+### Mock trpc
+
+[guide](https://tawaldevuniverse.hashnode.dev/some-tips-when-using-t3-stack-unit-testing-with-trpc-procedures-environment-setup)
