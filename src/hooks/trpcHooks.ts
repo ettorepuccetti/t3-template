@@ -6,7 +6,6 @@ import { api } from "~/utils/api";
 
 export const useTaskQuery = () => {
   return api.task.getAll.useQuery(undefined, {
-    queryKey: ["task.getAll", undefined],
     refetchOnWindowFocus: false,
   });
 };
