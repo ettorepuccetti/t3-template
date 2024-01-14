@@ -34,12 +34,7 @@ function WrapperComponentForTesting({
   children: React.ReactNode;
   session: Session | null;
 }) {
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: { queries: { retry: false } },
-      }),
-  );
+  const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     api.createClient({
       transformer: superjson,
@@ -105,8 +100,9 @@ export function buildTrpcMutationMock<TData, TVariables>(
     mutate: stub,
     context: undefined,
     isError: false,
-    isLoading: false,
     isSuccess: false,
+    isPending: false,
+    submittedAt: 0,
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     reset: () => {},
     isIdle: true,
@@ -150,12 +146,11 @@ export function buildTrpcQueryMock<TData>(
     isFetchedAfterMount: true,
     isInitialLoading: false,
     isPlaceholderData: false,
-    isPreviousData: false,
     isRefetchError: false,
     isRefetching: false,
     isStale: false,
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    remove: () => {},
     trpc: { path: "" },
+    isPending: false,
   };
 }
