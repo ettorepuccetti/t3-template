@@ -9,6 +9,13 @@ git push -u -f origin main
 
 ## DB
 
+### Prisma
+
+```
+pnpm prisma db push
+pnpm prisma generate
+```
+
 ### Docker
 
 Launch a new container for mysql:
