@@ -26,7 +26,6 @@ export const env = createEnv({
     AUTH0_ISSUER: z.string(),
     TURSO_DATABASE_URL: z.string().url(),
     TURSO_AUTH_TOKEN: z.string().optional(),
-    TURSO_REMOTE_DATABASE_URL: z.string().url().optional(),
   },
 
   /**
@@ -51,7 +50,6 @@ export const env = createEnv({
     AUTH0_ISSUER: process.env.AUTH0_ISSUER,
     TURSO_DATABASE_URL: process.env.TURSO_DATABASE_URL,
     TURSO_AUTH_TOKEN: process.env.TURSO_AUTH_TOKEN,
-    TURSO_REMOTE_DATABASE_URL: process.env.TURSO_REMOTE_DATABASE_URL,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
