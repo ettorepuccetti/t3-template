@@ -5,7 +5,7 @@ import { buildTrpcMutationMock, mountWithContext, session } from "./_constants";
 function DeleteTaskContext(props: { id: number; userId: string }) {
   //data provider
   useMergedStoreContext((store) => store.setDeleteTask)(
-    buildTrpcMutationMock(cy.stub().as("deleteTask")),
+    buildTrpcMutationMock("deleteTask"),
   );
 
   return <Task id={props.id} index={1} name="test" userId={props.userId} />;
