@@ -42,6 +42,7 @@ jobs:
           name: build
           if-no-files-found: error
           path: .next
+          include-hidden-files: true
 
   ui-chrome-tests:
     needs: install
