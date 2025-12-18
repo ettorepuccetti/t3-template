@@ -5,7 +5,6 @@ import {
   type UseTRPCMutationResult,
   type UseTRPCQueryResult,
 } from "@trpc/react-query/shared";
-import { type SinonStub } from "cypress/types/sinon";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { Inter as FontSans } from "next/font/google";
@@ -91,18 +90,19 @@ export function mountWithContext(
  * @returns a mock of the trpc mutation hook
  */
 export function buildTrpcMutationMock<TData, TVariables>(
-  stub: SinonStub,
+  stubAlias: string,
 ): UseTRPCMutationResult<
   TData,
   TRPCClientErrorLike<never>,
   TVariables,
   unknown
 > {
+  const stubInternal = cy.stub().as(stubAlias);
   return {
     data: undefined,
     error: null,
     status: "idle",
-    mutate: stub,
+    mutate: stubInternal,
     context: undefined,
     isError: false,
     isLoading: false,
@@ -114,7 +114,7 @@ export function buildTrpcMutationMock<TData, TVariables>(
     failureReason: null,
     isPaused: false,
     variables: undefined, //input will be passed as argument to the stub, unclear how still...
-    mutateAsync: stub.resolves(),
+    mutateAsync: stubInternal.resolves(),
     trpc: { path: "" },
   };
 }

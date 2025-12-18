@@ -8,7 +8,7 @@ generator client {
 
 datasource db {
     provider = "sqlite"
-    url      = "file:./dev.db" //must start with `file:`
+    url      = "file:./dev.db"
 }
 
 model Task {
