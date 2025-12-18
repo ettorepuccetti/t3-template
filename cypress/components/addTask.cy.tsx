@@ -5,7 +5,7 @@ import { buildTrpcMutationMock, mountWithContext, session } from "./_constants";
 function AddTaskContext({ nextTaskIndex = 1 }) {
   //data provider emulation
   useMergedStoreContext((store) => store.setAddTask)(
-    buildTrpcMutationMock(cy.stub().as("addTask")),
+    buildTrpcMutationMock("addTask"),
   );
 
   //set next task index in store
